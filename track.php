@@ -12,7 +12,7 @@ if(!$url || !filter_var($url, FILTER_VALIDATE_URL)){
 $sql = "INSERT INTO referrals.track_links (link_text, created) VALUES ('{$conn->real_escape_string($url)}', '$date')";
 
 if($conn->query($sql)){
-    echo json_encode(['status' => 'success']);
+    header('Location:' . $url);
     exit;
 }
 
