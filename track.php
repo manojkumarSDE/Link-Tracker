@@ -1,12 +1,6 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'vendor/autoload.php';
 require 'config.php';
-
-$mail = new PHPMailer(true);
 
 $url = isset($_GET['url']) ? $_GET['url'] : null;
 $date = date('Y-m-d');
