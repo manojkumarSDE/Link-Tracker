@@ -29,9 +29,10 @@ if($conn->query($sql)){
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
         $mail->Username   = $email_username;               // SMTP username
         $mail->Password   = $email_password;                        // SMTP password
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption, `ssl` also accepted
+        //$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption, `ssl` also accepted
+        $mail->SMTPSecure = 'ssl';         // Enable TLS encryption, `ssl` also accepted
         $mail->Port       = 465;                                    // TCP port to connect to
-    
+
         //Recipients
         $mail->setFrom($email_username, 'Ctl Serve');
         $mail->addAddress($email_username, 'Ctl Serve');     // Add a recipient
