@@ -23,7 +23,7 @@ if($conn->query($sql)){
 
     try {
         //Server settings
-        $mail->SMTPDebug = 2;                                       // Enable verbose debug output
+        $mail->SMTPDebug = 0;                                       // Enable verbose debug output
         $mail->isSMTP();                                            // Set mailer to use SMTP
         $mail->Host       = 'smtp.gmail.com';                     // Specify main and backup SMTP servers
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
@@ -42,17 +42,21 @@ if($conn->query($sql)){
         
         $html = "<table border='1' style='border-collapse: collapse; width: 100%;'>";
         $html .= "<tr>
+        <th>Sl.No</th>
         <th>Link</th>
         <th>Created</th>
         </tr>";
 
+        $i = 1;
         while($result = $query->fetch_assoc()){
 
             $html .= "<tr>";
+            $html .= "<td>$i</td>";
             $html .= "<td>{$result['link_text']}</td>";
             $html .= "<td>{$result['created']}</td>";
             $html .= "</tr>";
 
+            $i++;
         }
 
         $html .= "</table>";
