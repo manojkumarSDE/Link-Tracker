@@ -27,15 +27,14 @@ if($conn->query($sql)){
         $mail->isSMTP();                                            // Set mailer to use SMTP
         $mail->Host       = 'smtp.gmail.com';                     // Specify main and backup SMTP servers
         $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'manojkumarsde1@gmail.com';               // SMTP username
-        $mail->Password   = 'dlgw auez aifj oijb';                        // SMTP password
+        $mail->Username   = $email_username;               // SMTP username
+        $mail->Password   = $email_password;                        // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption, `ssl` also accepted
         $mail->Port       = 465;                                    // TCP port to connect to
     
         //Recipients
-        $mail->setFrom('manojkumarsde1@gmail.com', 'Ctl Serve');
-        $mail->addAddress('manojkumarsde1@gmail.com', 'Ctl Serve');     // Add a recipient
-
+        $mail->setFrom($email_username, 'Ctl Serve');
+        $mail->addAddress($email_username, 'Ctl Serve');     // Add a recipient
 
         $sql = "SELECT * FROM referrals.track_links WHERE date(created) = '$date' ";
         $query = $conn->query($sql);
